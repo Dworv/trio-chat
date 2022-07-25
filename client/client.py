@@ -12,6 +12,7 @@ async def send_loop(send_fn: Callable):
 async def main():
     async with open_nursery() as nursery:
         ws = ChatClient("ws://localhost:6969", print, nursery)
+        print("Enter your username: ", end="")
         nursery.start_soon(send_loop, ws.send)
 
 run(main)
